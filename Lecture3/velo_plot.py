@@ -1,11 +1,12 @@
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline
-%config InlineBackend.figure_format = 'retina'
+#%matplotlib inline
+#%config InlineBackend.figure_format = 'retina'
 import matplotlib.cm as cm  # colormap
 import numpy as np
 #plt.rcParams["text.usetex"] =True 
-plt.rcParams['font.family'] = 'Arial' #使用するフォント名
+plt.rcParams['font.family'] = 'sans-serif'
+#plt.rcParams['font.family'] = 'Arial' #使用するフォント名
 plt.rcParams["font.size"] = 25
 
 fig = plt.figure(figsize=(18,8))
@@ -13,17 +14,18 @@ fig = plt.figure(figsize=(18,8))
 dt=[0.0001,0.0010,0.0100,0.1000]
 symbol =['o-','D-','x-','>-']
 
-for j in range (1,4): 
+for j in range (1,4): #jは1,2,3 
     #ax = fig.add_subplot("13{}".format(j))
-    ax = fig.add_subplot(1,3,j) 
+    ax = fig.add_subplot(1,3,j) #複数プロット、縦1横3、j番目
     if(j>1):
         plt.yscale('log')
 
-    for i in range (0,4): 
+    for i in range (0,4): #iが0,1,2,3
         print(i,symbol[i],dt[i])  # for check on the arrays
-        time,vel= np.loadtxt("./Lecture3/velo_{:.4f}.dat".format(dt[i]), comments='#', unpack=True)
+        time,vel= np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture3/velo_{:.4f}.dat".format(dt[i]), comments='#', unpack=True)
         if(j!=3):
             plt.plot(time,vel, "{}".format(symbol[i]) ,markersize=10,color=cm.jet(i/4.),label=r"$\Delta t/t_0={}$".format(dt[i]))
+        #color=cm.jet:色を青から赤に順番に変わっていく
         else:
             plt.plot(time,np.abs(1 -10.*np.exp(-time)/vel), "{}".format(symbol[i]) ,markersize=10,color=cm.jet(i/4.),label=r"$\Delta t/t_0={}$".format(dt[i]))
         
@@ -57,6 +59,6 @@ for j in range (1,4):
 #図のマージン設定
 plt.subplots_adjust(wspace=0.5, hspace=0.25)
 #各自ファイルのパスを変えること．
-plt.savefig('./Lecture3/velo_dt_lin_log.png')
-plt.savefig('./Lecture3/velo_dt_lin_log.pdf')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture3/velo_dt_lin_log.png')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture3/velo_dt_lin_log.pdf')
 plt.show()

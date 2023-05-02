@@ -1,13 +1,14 @@
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline
+#matplotlib inline
 #図の解像度が上がる
-%config InlineBackend.figure_format = 'retina'
+#config InlineBackend.figure_format = 'retina'
 import numpy as np
 
 #Tex フォント（任意）:使いたい人は以下のコメントアウトを開放 
 #plt.rcParams["text.usetex"] =True 
-plt.rcParams['font.family'] = 'Arial' #使用するフォント名
+plt.rcParams['font.family'] = 'sans-serif'
+#plt.rcParams['font.family'] = 'Arial' #使用するフォント名
 plt.rcParams["font.size"] = 25
 
 #図全体のサイズやアスペクト比を変える
@@ -17,7 +18,7 @@ fig = plt.figure(figsize=(18,12))
  ###########################
 ax = fig.add_subplot(221)
 #各自ファイルのパスを変えること
-i, pi,error  = np.loadtxt("./Lecture2/pi-error.dat", comments='#', unpack=True)
+i, pi,error  = np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error.dat", comments='#', unpack=True)
 plt.plot(i, pi, "o-",markersize=10,color="b",label=r"rand()")
 plt.xscale('log')
 ###Drawing a line ######
@@ -43,7 +44,7 @@ plt.legend(ncol=1, loc=4, borderaxespad=0, fontsize=25,frameon=False)
  ###########################
 ax = fig.add_subplot(222)
 #各自ファイルのパスを変えること
-i, pi,error  = np.loadtxt("./Lecture2/pi-error.dat", comments='#', unpack=True)
+i, pi,error  = np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error.dat", comments='#', unpack=True)
 plt.plot(i, error, "x-",markersize=10,color="r",label=r"rand()")
 plt.xscale('log')
 plt.yscale('log')
@@ -73,7 +74,7 @@ plt.legend(ncol=1, loc=1, borderaxespad=0, fontsize=25,frameon=False)
 
 ax = fig.add_subplot(223)
 #各自ファイルのパスを変えること
-i, pi,error  = np.loadtxt("./Lecture2/pi-error-MT.dat", comments='#', unpack=True)
+i, pi,error  = np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error-MT.dat", comments='#', unpack=True)
 plt.plot(i, pi, "D-",markersize=10,color="g",label=r"MT")
 plt.xscale('log')
 ###Drawing a line ######
@@ -100,7 +101,7 @@ plt.legend(ncol=1, loc=4, borderaxespad=0, fontsize=25,frameon=False)
 
 ax = fig.add_subplot(224)
 #各自ファイルのパスを変えること
-i, pi,error  = np.loadtxt("./Lecture2/pi-error-MT.dat", comments='#', unpack=True)
+i, pi,error  = np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error.dat", comments='#', unpack=True)
 plt.plot(i, error, "s-",markersize=10,color="m",label=r"MT")
 
 ###Drawing a line ######
@@ -128,5 +129,7 @@ plt.legend(ncol=1, loc=1, borderaxespad=0, fontsize=25,frameon=False)
 plt.subplots_adjust(wspace=0.3, hspace=0.3)
 
 #各自ファイルのパスを変えること．
-plt.savefig('./Lecture2/pi-error.png')
-plt.savefig('./Lecture2/pi-error.pdf')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error.png')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture2/pi-error.pdf')
+
+plt.show()

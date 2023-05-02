@@ -1,8 +1,8 @@
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline
+# %matplotlib inline
 #図の解像度が上がる
-%config InlineBackend.figure_format = 'retina'
+# %config InlineBackend.figure_format = 'retina'
 import numpy as np
 #Texフォント
 #plt.rcParams["text.usetex"] =True 
@@ -14,7 +14,7 @@ fig = plt.figure(figsize=(7,7))
 ax = fig.add_subplot(111)
 
 #各自ファイルのパスを変えること
-x, y  = np.loadtxt("./Lecture1/coord100000.dat", comments='#', unpack=True)
+x, y  = np.loadtxt("/home/ssaito/simulation/2023-simulation-training/Lecture1/coord100000.dat", comments='#', unpack=True)
 plt.plot(x, y, "o",markersize=0.5,color="b",label=r"$x^2+y^2\leq1$")
 
 #図の書式設定
@@ -35,5 +35,5 @@ plt.subplots_adjust(wspace=0.0, hspace=0.25)
 #各グラフのアスペクト比を1:1にする
 ax.set_aspect('equal', adjustable='box')
 #各自ファイルのパスを変えること．
-plt.savefig('./Lecture1/coord.png')
-plt.savefig('./Lecture1/coord.pdf')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture1/coord.png')
+plt.savefig('/home/ssaito/simulation/2023-simulation-training/Lecture1/coord.pdf')
